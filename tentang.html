@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tentang Kami — PT. Sakti Multi Komputindo</title>
+  <meta name="description" content="Mitra terpercaya untuk pemetaan dan pengadaan alat kantor di Sulawesi Selatan dan sekitarnya." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="mitra-data.js"></script>
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #2563eb; transition: width .25s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .card-hover { transition: transform .2s ease, box-shadow .2s ease; }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.10); }
+    .btn-primary { transition: background .2s, transform .15s, box-shadow .2s; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37,99,235,.30); }
+  </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between py-3">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <img src="logo.png" alt="PT. Sakti Multi Komputindo" class="h-10 w-auto object-contain"
+             onerror="this.style.display='none';" />
+        <div class="leading-tight">
+          <div class="text-sm font-bold text-gray-900 leading-tight">PT. Sakti Multi<br/>Komputindo</div>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-7">
+        <a href="index.html"   class="nav-link text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors" data-id="Beranda" data-en="Home">Beranda</a>
+        <a href="layanan.html" class="nav-link text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors" data-id="Layanan" data-en="Services">Layanan</a>
+        <a href="produk.html"  class="nav-link text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors" data-id="Produk" data-en="Products">Produk</a>
+        <a href="tentang.html" class="nav-link active text-sm font-bold text-gray-900" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a>
+        <a href="kontak.html"  class="nav-link text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors" data-id="Kontak" data-en="Contact">Kontak</a>
+      </nav>
+      <!-- Language Toggle -->
+      <div class="hidden md:flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5">
+        <button id="btnLangID" onclick="setLang('id')" class="text-xs font-semibold px-2.5 py-1 rounded-md transition-all bg-white text-blue-600 shadow-sm">ID</button>
+        <button id="btnLangEN" onclick="setLang('en')" class="text-xs font-semibold px-2.5 py-1 rounded-md transition-all text-gray-500 hover:text-gray-700">EN</button>
+      </div>
+      <div class="hidden md:block relative" id="contactDropWrap">
+        <button onclick="toggleContactDrop()" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-sm flex items-center gap-2">
+          <span data-id="Hubungi Kami" data-en="Contact Us">Hubungi Kami</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="contactDrop" class="hidden absolute right-0 top-full mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 p-2 z-50 w-72">
+          <a href="mailto:marketing@saktimultikomputindo.com" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-blue-50 transition-colors group">
+            <div class="w-10 h-10 bg-blue-100 group-hover:bg-blue-200 rounded-xl flex items-center justify-center shrink-0 transition-colors">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-gray-900" data-id="Hubungi via Email" data-en="Contact via Email">Hubungi via Email</div>
+              <div class="text-xs text-gray-400">marketing@saktimultikomputindo.com</div>
+            </div>
+          </a>
+          <a href="https://wa.me/628114169988" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-green-50 transition-colors group">
+            <div class="w-10 h-10 bg-green-100 group-hover:bg-green-200 rounded-xl flex items-center justify-center shrink-0 transition-colors">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-gray-900" data-id="Hubungi via WhatsApp" data-en="Contact via WhatsApp">Hubungi via WhatsApp</div>
+              <div class="text-xs text-gray-400">+62 811 4169 988</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <button id="mobileBtn" class="md:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors">
+        <svg id="iconOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="iconClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100 bg-white">
+      <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-1">
+        <div class="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5 w-fit mb-2">
+          <button id="btnMobLangID" onclick="setLang('id')" class="text-xs font-semibold px-2.5 py-1 rounded-md transition-all bg-white text-blue-600 shadow-sm">ID</button>
+          <button id="btnMobLangEN" onclick="setLang('en')" class="text-xs font-semibold px-2.5 py-1 rounded-md transition-all text-gray-500 hover:text-gray-700">EN</button>
+        </div>
+        <a href="index.html"   class="py-2.5 px-3 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" data-id="Beranda" data-en="Home">Beranda</a>
+        <a href="layanan.html" class="py-2.5 px-3 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" data-id="Layanan" data-en="Services">Layanan</a>
+        <a href="produk.html"  class="py-2.5 px-3 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" data-id="Produk" data-en="Products">Produk</a>
+        <a href="tentang.html" class="py-2.5 px-3 rounded-lg text-sm font-bold text-blue-600 bg-blue-50" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a>
+        <a href="kontak.html"  class="py-2.5 px-3 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors" data-id="Kontak" data-en="Contact">Kontak</a>
+        <div class="mt-2 grid grid-cols-2 gap-2">
+          <a href="mailto:marketing@saktimultikomputindo.com" class="flex items-center justify-center gap-1.5 bg-blue-600 text-white text-xs font-semibold px-3 py-2.5 rounded-xl transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Email
+          </a>
+          <a href="https://wa.me/628114169988" target="_blank" rel="noopener" class="flex items-center justify-center gap-1.5 bg-green-500 text-white text-xs font-semibold px-3 py-2.5 rounded-xl transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section id="heroSection" class="bg-gradient-to-br from-slate-50 via-white to-blue-50 py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <span class="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-6" data-id="Tentang Kami" data-en="About Us">Tentang Kami</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight" data-id="Mitra Terpercaya untuk<br/><span class='text-blue-600'>Pemetaan &amp; Pengadaan</span><br/>Alat Kantor di Sulawesi<br/>Selatan dan Sekitarnya" data-en="Trusted Partner for<br/><span class='text-blue-600'>Mapping &amp; Procurement</span><br/>in South Sulawesi<br/>and Beyond">
+              Mitra Terpercaya untuk<br/>
+              <span class="text-blue-600">Pemetaan & Pengadaan</span><br/>
+              Alat Kantor di Sulawesi<br/>Selatan dan Sekitarnya
+            </h1>
+            <p class="text-gray-500 text-sm md:text-base leading-relaxed mb-8" data-id="PT. Sakti Multi Komputindo adalah perusahaan berbasis di Makassar, Sulawesi Selatan, yang bergerak di bidang jasa survei pemetaan geospasial berteknologi tinggi dan pengadaan alat kantor berkualitas untuk memenuhi kebutuhan instansi pemerintah maupun perusahaan swasta di seluruh Indonesia." data-en="PT. Sakti Multi Komputindo is a company based in Makassar, South Sulawesi, operating in the field of high-technology geospatial mapping survey services and quality office equipment procurement to meet the needs of government agencies and private companies throughout Indonesia.">
+              PT. Sakti Multi Komputindo adalah perusahaan berbasis di Makassar, Sulawesi Selatan, yang bergerak di bidang jasa survei pemetaan geospasial berteknologi tinggi dan pengadaan alat kantor berkualitas untuk memenuhi kebutuhan instansi pemerintah maupun perusahaan swasta di seluruh Indonesia.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="layanan.html" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow-sm text-sm" data-id="Lihat Layanan" data-en="View Services">Lihat Layanan</a>
+              <a href="kontak.html" class="border-2 border-gray-200 hover:border-blue-600 hover:text-blue-600 text-gray-700 font-semibold px-6 py-3 rounded-xl text-sm transition-colors" data-id="Hubungi Kami" data-en="Contact Us">Hubungi Kami</a>
+            </div>
+          </div>
+          <div class="flex justify-center lg:justify-end">
+            <div class="relative">
+              <div class="w-72 h-72 md:w-80 md:h-80 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl flex items-center justify-center shadow-xl">
+                <img src="logo.png" alt="Logo PT. Sakti Multi Komputindo" class="w-56 h-56 object-contain"
+                     onerror="this.outerHTML='<div class=\'text-center\'><div class=\'w-28 h-28 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-4\'><span class=\'text-white text-4xl font-extrabold\'>SM</span></div><div class=\'font-bold text-gray-700 text-lg\'>PT. Sakti Multi<br/>Komputindo</div></div>'" />
+              </div>
+              <div class="absolute -bottom-4 -right-4 bg-white rounded-2xl px-5 py-3 shadow-lg border border-gray-100">
+                <div class="text-blue-600 font-extrabold text-2xl">10+</div>
+                <div class="text-xs text-gray-500 font-medium" data-id="Tahun Pengalaman" data-en="Years of Experience">Tahun Pengalaman</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="py-12 bg-blue-600">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid grid-cols-3 gap-8 text-center text-white">
+          <div>
+            <div class="text-4xl font-extrabold mb-1">10+</div>
+            <div class="text-blue-200 text-sm" data-id="Tahun Berpengalaman" data-en="Years of Experience">Tahun Berpengalaman</div>
+          </div>
+          <div class="border-x border-blue-500">
+            <div class="text-4xl font-extrabold mb-1">200+</div>
+            <div class="text-blue-200 text-sm" data-id="Project Berhasil" data-en="Projects Completed">Project Berhasil</div>
+          </div>
+          <div>
+            <div class="text-4xl font-extrabold mb-1">50+</div>
+            <div class="text-blue-200 text-sm" data-id="Klien Aktif" data-en="Active Clients">Klien Aktif</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISI MISI -->
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-8 mb-20">
+          <div class="bg-blue-600 rounded-3xl p-10 text-white">
+            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            </div>
+            <h2 class="text-2xl font-extrabold mb-4" data-id="Visi" data-en="Vision">Visi</h2>
+            <p class="text-blue-100 leading-relaxed" data-id="Menjadi perusahaan survei pemetaan dan pengadaan terdepan di Indonesia Timur yang memberikan solusi geospasial inovatif dan pengadaan berkualitas yang mendukung pembangunan nasional secara berkelanjutan." data-en="To become the leading mapping survey and procurement company in Eastern Indonesia, providing innovative geospatial solutions and quality procurement that sustainably supports national development.">Menjadi perusahaan survei pemetaan dan pengadaan terdepan di Indonesia Timur yang memberikan solusi geospasial inovatif dan pengadaan berkualitas yang mendukung pembangunan nasional secara berkelanjutan.</p>
+          </div>
+          <div class="bg-gray-50 rounded-3xl p-10">
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            </div>
+            <h2 class="text-2xl font-extrabold text-gray-900 mb-4" data-id="Misi" data-en="Mission">Misi</h2>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center shrink-0 mt-0.5"><svg class="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l7.879-7.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+                <span class="text-sm text-gray-600 leading-relaxed" data-id="Memberikan layanan survei pemetaan yang presisi, akurat, dan tepat waktu." data-en="Providing precise, accurate, and on-time mapping survey services.">Memberikan layanan survei pemetaan yang presisi, akurat, dan tepat waktu.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center shrink-0 mt-0.5"><svg class="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l7.879-7.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+                <span class="text-sm text-gray-600 leading-relaxed" data-id="Menyediakan produk pengadaan berkualitas dari vendor terpercaya dengan harga kompetitif." data-en="Providing quality procurement products from trusted vendors at competitive prices.">Menyediakan produk pengadaan berkualitas dari vendor terpercaya dengan harga kompetitif.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center shrink-0 mt-0.5"><svg class="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l7.879-7.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+                <span class="text-sm text-gray-600 leading-relaxed" data-id="Mengembangkan SDM profesional yang kompeten di bidang geodesi dan geomatika." data-en="Developing competent professional human resources in the fields of geodesy and geomatics.">Mengembangkan SDM profesional yang kompeten di bidang geodesi dan geomatika.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center shrink-0 mt-0.5"><svg class="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l7.879-7.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+                <span class="text-sm text-gray-600 leading-relaxed" data-id="Membangun kemitraan jangka panjang yang saling menguntungkan bersama klien." data-en="Building long-term mutually beneficial partnerships with clients.">Membangun kemitraan jangka panjang yang saling menguntungkan bersama klien.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PROFIL PERUSAHAAN -->
+        <div class="text-center mb-12">
+          <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-4 py-1.5 rounded-full mb-4" data-id="Profil Perusahaan" data-en="Company Profile">Profil Perusahaan</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900" data-id="Identitas Perusahaan" data-en="Company Identity">Identitas Perusahaan</h2>
+        </div>
+        <div class="max-w-3xl mx-auto bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          <div class="divide-y divide-gray-100">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between px-7 py-4 hover:bg-gray-50 transition-colors">
+              <span class="text-sm text-gray-500 font-medium mb-1 sm:mb-0" data-id="Nama Perusahaan" data-en="Company Name">Nama Perusahaan</span>
+              <span class="text-sm font-semibold text-gray-900">PT. Sakti Multi Komputindo</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between px-7 py-4 hover:bg-gray-50 transition-colors">
+              <span class="text-sm text-gray-500 font-medium mb-1 sm:mb-0" data-id="Bidang Usaha" data-en="Business Field">Bidang Usaha</span>
+              <span class="text-sm font-semibold text-gray-900" data-id="Jasa Survei Pemetaan &amp; Pengadaan Barang" data-en="Mapping Survey Services &amp; Goods Procurement">Jasa Survei Pemetaan & Pengadaan Barang</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between px-7 py-4 hover:bg-gray-50 transition-colors">
+              <span class="text-sm text-gray-500 font-medium mb-1 sm:mb-0" data-id="Alamat" data-en="Address">Alamat</span>
+              <span class="text-sm font-semibold text-gray-900">JL. Borong Raya No. 88, Manggala, Makassar, Sulawesi Selatan</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between px-7 py-4 hover:bg-gray-50 transition-colors">
+              <span class="text-sm text-gray-500 font-medium mb-1 sm:mb-0" data-id="Spesialisasi" data-en="Specialization">Spesialisasi</span>
+              <span class="text-sm font-semibold text-gray-900">LiDAR · Fotogrametri · GNSS · GIS</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between px-7 py-4 hover:bg-gray-50 transition-colors">
+              <span class="text-sm text-gray-500 font-medium mb-1 sm:mb-0" data-id="Email Resmi" data-en="Official Email">Email Resmi</span>
+              <a href="mailto:marketing@saktimultikomputindo.com" class="text-sm font-semibold text-blue-600 hover:underline">marketing@saktimultikomputindo.com</a>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between px-7 py-4 hover:bg-gray-50 transition-colors">
+              <span class="text-sm text-gray-500 font-medium mb-1 sm:mb-0" data-id="Jam Operasional" data-en="Operating Hours">Jam Operasional</span>
+              <span class="text-sm font-semibold text-gray-900" data-id="Senin–Jumat, 08.00–17.00 WITA" data-en="Monday–Friday, 08:00–17:00 WITA">Senin–Jumat, 08.00–17.00 WITA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NILAI PERUSAHAAN -->
+    <section class="py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-16">
+          <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-4 py-1.5 rounded-full mb-4" data-id="Nilai Kami" data-en="Our Values">Nilai Kami</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4" data-id="Prinsip yang Kami Pegang" data-en="Principles We Uphold">Prinsip yang Kami Pegang</h2>
+          <p class="text-gray-500 max-w-xl mx-auto text-sm md:text-base" data-id="Nilai-nilai inti yang menjadi fondasi dalam setiap pekerjaan dan hubungan kami dengan klien." data-en="Core values that form the foundation of every task and relationship with our clients.">Nilai-nilai inti yang menjadi fondasi dalam setiap pekerjaan dan hubungan kami dengan klien.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="card-hover bg-white rounded-2xl p-7 shadow-sm border border-gray-200">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-3" data-id="Integritas" data-en="Integrity">Integritas</h3>
+            <p class="text-sm text-gray-500 leading-relaxed" data-id="Kami menjunjung tinggi kejujuran dan transparansi dalam setiap aspek pekerjaan, dari penawaran harga hingga pelaporan hasil survei." data-en="We uphold honesty and transparency in every aspect of our work, from price quotations to survey result reporting.">Kami menjunjung tinggi kejujuran dan transparansi dalam setiap aspek pekerjaan, dari penawaran harga hingga pelaporan hasil survei.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-7 shadow-sm border border-gray-200">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-3" data-id="Inovasi" data-en="Innovation">Inovasi</h3>
+            <p class="text-sm text-gray-500 leading-relaxed" data-id="Kami terus mengadopsi teknologi terbaru dalam survei pemetaan untuk memberikan solusi yang lebih efisien dan akurat bagi klien." data-en="We continuously adopt the latest technology in mapping surveys to deliver more efficient and accurate solutions for clients.">Kami terus mengadopsi teknologi terbaru dalam survei pemetaan untuk memberikan solusi yang lebih efisien dan akurat bagi klien.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-7 shadow-sm border border-gray-200">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-3" data-id="Profesionalisme" data-en="Professionalism">Profesionalisme</h3>
+            <p class="text-sm text-gray-500 leading-relaxed" data-id="Tim kami terdiri dari ahli geodesi dan geomatika berpengalaman yang berkomitmen pada standar profesional tertinggi." data-en="Our team consists of experienced geodesy and geomatics experts committed to the highest professional standards.">Tim kami terdiri dari ahli geodesi dan geomatika berpengalaman yang berkomitmen pada standar profesional tertinggi.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-7 shadow-sm border border-gray-200">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-3" data-id="Ketepatan Waktu" data-en="Timeliness">Ketepatan Waktu</h3>
+            <p class="text-sm text-gray-500 leading-relaxed" data-id="Kami memahami bahwa waktu adalah aset berharga. Setiap proyek dikerjakan sesuai jadwal yang telah disepakati." data-en="We understand that time is a valuable asset. Every project is completed on schedule as agreed.">Kami memahami bahwa waktu adalah aset berharga. Setiap proyek dikerjakan sesuai jadwal yang telah disepakati.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-7 shadow-sm border border-gray-200">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-3" data-id="Kualitas" data-en="Quality">Kualitas</h3>
+            <p class="text-sm text-gray-500 leading-relaxed" data-id="Setiap data dan produk yang kami hasilkan melewati proses quality control yang ketat untuk memastikan standar kualitas tertinggi." data-en="Every data and product we produce undergoes a strict quality control process to ensure the highest quality standards.">Setiap data dan produk yang kami hasilkan melewati proses quality control yang ketat untuk memastikan standar kualitas tertinggi.</p>
+          </div>
+          <div class="card-hover bg-white rounded-2xl p-7 shadow-sm border border-gray-200">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-3" data-id="Kepuasan Klien" data-en="Client Satisfaction">Kepuasan Klien</h3>
+            <p class="text-sm text-gray-500 leading-relaxed" data-id="Kepuasan klien adalah prioritas utama kami. Kami terus mendengarkan dan merespons kebutuhan klien secara proaktif." data-en="Client satisfaction is our top priority. We continuously listen and proactively respond to client needs.">Kepuasan klien adalah prioritas utama kami. Kami terus mendengarkan dan merespons kebutuhan klien secara proaktif.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-blue-600">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 text-center">
+        <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-4" data-id="Mari Berkolaborasi" data-en="Let's Collaborate">Mari Berkolaborasi</h2>
+        <p class="text-blue-100 mb-8 max-w-lg mx-auto text-sm md:text-base" data-id="Jadikan PT. Sakti Multi Komputindo sebagai mitra strategis untuk project survei pemetaan dan kebutuhan pengadaan Anda." data-en="Make PT. Sakti Multi Komputindo your strategic partner for mapping survey projects and procurement needs.">Jadikan PT. Sakti Multi Komputindo sebagai mitra strategis untuk project survei pemetaan dan kebutuhan pengadaan Anda.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="mailto:marketing@saktimultikomputindo.com" class="inline-flex items-center justify-center gap-2 bg-white text-blue-600 hover:bg-blue-50 font-semibold px-7 py-3.5 rounded-xl transition-colors text-sm shadow-md">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span data-id="Email Kami" data-en="Email Us">Email Kami</span>
+          </a>
+          <a href="https://wa.me/628114169988" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors text-sm shadow-md">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span data-id="WhatsApp Kami" data-en="WhatsApp Us">WhatsApp Kami</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MITRA SLIDER -->
+  <section class="py-14 bg-gray-50 border-t border-gray-100 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 text-center mb-10">
+      <span class="inline-block bg-white text-gray-500 text-xs font-semibold px-4 py-1.5 rounded-full border border-gray-200 mb-4" data-id="Mitra &amp; Klien" data-en="Partners &amp; Clients">Mitra & Klien</span>
+      <h2 class="text-xl md:text-2xl font-extrabold text-gray-900 mb-2" data-id="Dipercaya oleh Berbagai Institusi" data-en="Trusted by Various Institutions">Dipercaya oleh Berbagai Institusi</h2>
+      <p class="text-gray-500 text-sm max-w-lg mx-auto" data-id="Kami telah bekerja sama dengan berbagai instansi pemerintah dan perusahaan swasta di seluruh Indonesia." data-en="We have collaborated with various government agencies and private companies across Indonesia.">Kami telah bekerja sama dengan berbagai instansi pemerintah dan perusahaan swasta di seluruh Indonesia.</p>
+    </div>
+    <div class="relative">
+      <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+      <div id="mitraTrack" class="flex items-center gap-8"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-1">
+          <a href="index.html" class="flex items-center gap-2.5 mb-5">
+            <img src="logo.png" alt="Logo" class="h-9 w-auto object-contain brightness-0 invert" onerror="this.style.display='none';" />
+            <span class="text-white font-bold text-sm leading-tight">PT. Sakti Multi<br/>Komputindo</span>
+          </a>
+          <p class="text-xs leading-relaxed text-gray-500" data-id="Mitra terpercaya untuk pemetaan dan pengadaan alat kantor di Sulawesi Selatan dan sekitarnya." data-en="Trusted partner for mapping and office equipment procurement in South Sulawesi and beyond.">Mitra terpercaya untuk pemetaan dan pengadaan alat kantor di Sulawesi Selatan dan sekitarnya.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-5" data-id="Navigasi" data-en="Navigation">Navigasi</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html"   class="text-xs hover:text-white transition-colors" data-id="Beranda" data-en="Home">Beranda</a></li>
+            <li><a href="layanan.html" class="text-xs hover:text-white transition-colors" data-id="Layanan" data-en="Services">Layanan</a></li>
+            <li><a href="produk.html"  class="text-xs hover:text-white transition-colors" data-id="Produk" data-en="Products">Produk</a></li>
+            <li><a href="tentang.html" class="text-xs hover:text-white transition-colors" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a></li>
+            <li><a href="kontak.html"  class="text-xs hover:text-white transition-colors" data-id="Kontak" data-en="Contact">Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-5" data-id="Layanan" data-en="Services">Layanan</h4>
+          <ul class="space-y-3">
+            <li><a href="layanan.html" class="text-xs hover:text-white transition-colors" data-id="Survei LiDAR" data-en="LiDAR Survey">Survei LiDAR</a></li>
+            <li><a href="layanan.html" class="text-xs hover:text-white transition-colors" data-id="Fotogrametri UAV" data-en="UAV Photogrammetry">Fotogrametri UAV</a></li>
+            <li><a href="layanan.html" class="text-xs hover:text-white transition-colors" data-id="Survei GNSS/GPS" data-en="GNSS/GPS Survey">Survei GNSS/GPS</a></li>
+            <li><a href="layanan.html" class="text-xs hover:text-white transition-colors" data-id="Pemetaan Batimetri" data-en="Bathymetric Mapping">Pemetaan Batimetri</a></li>
+            <li><a href="layanan.html" class="text-xs hover:text-white transition-colors" data-id="GIS &amp; Remote Sensing" data-en="GIS &amp; Remote Sensing">GIS & Remote Sensing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-5" data-id="Kontak" data-en="Contact">Kontak</h4>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-2.5">
+              <svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:marketing@saktimultikomputindo.com" title="marketing@saktimultikomputindo.com" class="text-xs hover:text-white transition-colors" data-id="Email Resmi" data-en="Official Email">Email Resmi</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <svg class="w-3.5 h-3.5 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              <a href="https://wa.me/628114169988" target="_blank" rel="noopener" class="text-xs hover:text-white transition-colors">+62 811 4169 988</a>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span class="text-xs">JL. Borong Raya No. 88, Manggala,<br/>Makassar, Sulawesi Selatan</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="text-xs" data-id="Senin–Jumat, 08.00–17.00 WITA" data-en="Monday–Friday, 08:00–17:00 WITA">Senin–Jumat, 08.00–17.00 WITA</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center">
+        <p class="text-xs text-gray-600" data-id="© 2025 PT. Sakti Multi Komputindo. Hak Cipta Dilindungi Undang-Undang." data-en="© 2025 PT. Sakti Multi Komputindo. All Rights Reserved.">© 2025 PT. Sakti Multi Komputindo. Hak Cipta Dilindungi Undang-Undang.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Language system
+    var _smkLang = localStorage.getItem('smk_lang') || 'id';
+    function setLang(lang) {
+      _smkLang = lang;
+      localStorage.setItem('smk_lang', lang);
+      document.querySelectorAll('[data-id]').forEach(function(el) {
+        var val = lang === 'en' ? (el.getAttribute('data-en') || el.getAttribute('data-id')) : el.getAttribute('data-id');
+        el.innerHTML = val;
+      });
+      var _a = 'text-xs font-semibold px-2.5 py-1 rounded-md transition-all bg-white text-blue-600 shadow-sm';
+      var _i = 'text-xs font-semibold px-2.5 py-1 rounded-md transition-all text-gray-500 hover:text-gray-700';
+      ['btnLangID','btnMobLangID'].forEach(function(id){var b=document.getElementById(id);if(b)b.className=lang==='id'?_a:_i;});
+      ['btnLangEN','btnMobLangEN'].forEach(function(id){var b=document.getElementById(id);if(b)b.className=lang==='en'?_a:_i;});
+      document.documentElement.lang = lang;
+    }
+    setLang(_smkLang);
+
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const iconOpen = document.getElementById('iconOpen');
+    const iconClose = document.getElementById('iconClose');
+    mobileBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      iconOpen.classList.toggle('hidden', !isOpen);
+      iconClose.classList.toggle('hidden', isOpen);
+    });
+
+    function toggleContactDrop() {
+      document.getElementById('contactDrop').classList.toggle('hidden');
+    }
+    document.addEventListener('click', function (e) {
+      const wrap = document.getElementById('contactDropWrap');
+      if (wrap && !wrap.contains(e.target)) {
+        document.getElementById('contactDrop').classList.add('hidden');
+      }
+    });
+
+    // Mitra slider — daftar file dikelola di mitra-data.js
+    (function () {
+      const track = document.getElementById('mitraTrack');
+      if (!track || typeof mitraFiles === 'undefined') return;
+      function toLabel(f) {
+        return f.replace(/\.svg$/i, '').replace(/[-_]/g, ' ')
+                .replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+      }
+      [...mitraFiles, ...mitraFiles].forEach(function (file) {
+        const name = toLabel(file);
+        const div = document.createElement('div');
+        div.className = 'shrink-0 flex items-center justify-center bg-white border border-gray-200 rounded-2xl px-7 py-4 h-16 min-w-[180px] shadow-sm';
+        const img = document.createElement('img');
+        img.src = 'images/mitra/' + file;
+        img.alt = name;
+        img.title = name;
+        img.className = 'h-8 w-auto object-contain transition-all duration-300';
+        img.onerror = function () {
+          div.innerHTML = '<span class="text-sm font-semibold text-gray-500 whitespace-nowrap">' + name + '</span>';
+        };
+        div.appendChild(img);
+        track.appendChild(div);
+      });
+      let x = 0;
+      function tick() {
+        x += 0.6;
+        if (x >= track.scrollWidth / 2) x = 0;
+        track.style.transform = 'translateX(' + (x - track.scrollWidth / 2) + 'px)';
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+
+    // Hero SVG background — degrades gracefully if file not found
+    (function() {
+      var s = document.getElementById('heroSection');
+      if (!s) return;
+      var f = 'images/hero/tentang-kami.svg';
+      var p = new Image();
+      p.onload = function() {
+        s.style.backgroundImage = 'url(' + f + ')';
+        s.style.backgroundSize = 'cover';
+        s.style.backgroundPosition = 'center right';
+        s.style.backgroundRepeat = 'no-repeat';
+      };
+      p.src = f;
+    })();
+  </script>
+</body>
+</html>
