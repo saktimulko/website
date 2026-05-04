@@ -497,8 +497,6 @@
       const iconSend = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
       const iconSpin = '<svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>';
 
-      alert('Mencoba mengirim...');
-
       btn.disabled = true;
       btn.innerHTML = iconSpin + ' <span>' + (_smkLang === 'en' ? 'Sending...' : 'Mengirim...') + '</span>';
 
@@ -515,7 +513,6 @@
 
       emailjs.send('service_4sm9ctd', 'template_kvxrbo7', params)
         .then(function () {
-          alert('SUKSES: Pesan terkirim');
           form.reset();
           document.getElementById('successMsg').classList.remove('hidden');
           document.getElementById('errorMsg').classList.add('hidden');
@@ -524,7 +521,6 @@
           setTimeout(function () { document.getElementById('successMsg').classList.add('hidden'); }, 8000);
         })
         .catch(function (error) {
-          alert('GAGAL: ' + JSON.stringify(error));
           document.getElementById('errorMsg').classList.remove('hidden');
           document.getElementById('successMsg').classList.add('hidden');
           btn.innerHTML = iconSend + ' <span data-id="Kirim Pesan" data-en="Send Message">' + (_smkLang === 'en' ? 'Send Message' : 'Kirim Pesan') + '</span>';
