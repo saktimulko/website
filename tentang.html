@@ -28,6 +28,16 @@
     .btn-primary { transition: background .2s, transform .15s, box-shadow .2s; }
     .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37,99,235,.30); }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://saktimultikomputindo.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Tentang Kami", "item": "https://saktimultikomputindo.com/tentang.html"}
+    ]
+  }
+  </script>
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
@@ -41,7 +51,7 @@
           <div class="text-sm font-bold text-gray-900 leading-tight">PT. Sakti Multi<br/>Komputindo</div>
         </div>
       </a>
-      <nav class="hidden md:flex items-center gap-7">
+      <nav class="hidden md:flex items-center gap-7" aria-label="Navigasi Utama">
         <a href="index.html"   class="nav-link text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors" data-id="Beranda" data-en="Home">Beranda</a>
         <a href="layanan.html" class="nav-link text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors" data-id="Layanan" data-en="Services">Layanan</a>
         <a href="produk.html"  class="nav-link text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors" data-id="Produk" data-en="Products">Produk</a>

@@ -29,7 +29,53 @@
     .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(37,99,235,.30); }
     .btn-outline { transition: background .2s, color .2s, border-color .2s; }
     .service-row { transition: background .2s ease; }
+    .section-bg-mengapa { position: relative; }
+    .section-bg-mengapa::before { content: ''; position: absolute; inset: 0; background-image: url('images/beranda/mengapa-memilih-kami.svg'); background-repeat: no-repeat; background-position: center; background-size: cover; opacity: 0.07; pointer-events: none; z-index: 0; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://saktimultikomputindo.com/#organization",
+        "name": "PT. Sakti Multi Komputindo",
+        "url": "https://saktimultikomputindo.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://saktimultikomputindo.com/logo.png"
+        },
+        "description": "Solusi geospasial terpercaya di Makassar. Melayani survei LiDAR, fotogrametri UAV, pemetaan batimetri, dan pengadaan alat kantor berkualitas untuk seluruh wilayah Indonesia.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "JL. Borong Raya No. 88, Manggala",
+          "addressLocality": "Makassar",
+          "addressRegion": "Sulawesi Selatan",
+          "addressCountry": "ID"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "marketing@saktimultikomputindo.com",
+          "contactType": "customer service",
+          "availableLanguage": "Indonesian"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://saktimultikomputindo.com/#website",
+        "url": "https://saktimultikomputindo.com",
+        "name": "PT. Sakti Multi Komputindo",
+        "publisher": {"@id": "https://saktimultikomputindo.com/#organization"}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://saktimultikomputindo.com/"}
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-white text-gray-800 antialiased">
 
@@ -43,7 +89,7 @@
           <div class="text-sm font-bold text-gray-900 leading-tight">PT. Sakti Multi<br/>Komputindo</div>
         </div>
       </a>
-      <nav class="hidden md:flex items-center gap-7">
+      <nav class="hidden md:flex items-center gap-7" aria-label="Navigasi Utama">
         <a href="index.html"   class="nav-link active text-sm font-bold text-gray-900" data-id="Beranda" data-en="Home">Beranda</a>
         <a href="layanan.html" class="nav-link text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors" data-id="Layanan" data-en="Services">Layanan</a>
         <a href="produk.html"  class="nav-link text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors" data-id="Produk" data-en="Products">Produk</a>
@@ -294,8 +340,8 @@
     </section>
 
     <!-- KENAPA KAMI -->
-    <section class="py-24 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <section class="py-24 bg-gray-50 section-bg-mengapa">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
         <div class="text-center mb-16">
           <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-4 py-1.5 rounded-full mb-4" data-id="Keunggulan Kami" data-en="Our Advantages">Keunggulan Kami</span>
           <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4" data-id="Mengapa Memilih Kami?" data-en="Why Choose Us?">Mengapa Memilih Kami?</h2>
